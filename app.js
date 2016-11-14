@@ -2,12 +2,14 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import logger from 'koa-logger';
 import json from 'koa-json';
+import cors from 'koa-cors';
 import bodyParser from 'koa-bodyparser';
 const app = new Koa();
 const router = new Router();
 
 // Logger
 app.use(logger());
+app.use(cors());
 app.use(json());
 app.use(bodyParser());
 
@@ -27,6 +29,7 @@ router.get('/', function *(next) {
       }
     ]
   };
+  // So demo var is assigned to be body of response
   this.body = demo;
 });
 
